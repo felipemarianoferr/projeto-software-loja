@@ -15,7 +15,7 @@ public class ProdutoService {
 
         try {
             return restTemplate
-                    .getForEntity("http://54.207.148.33:8082/api/produto" + id,
+                    .getForEntity("http://54.207.148.33:8082/api/produto/" + id,
                             Produto.class)
                     .getBody();
         } catch (HttpClientErrorException.NotFound e) {

@@ -14,7 +14,7 @@ public class UsuarioService {
 
         try {
             return restTemplate
-                    .getForEntity("http://54.207.148.33:8080/api/usuario" + email,
+                    .getForEntity("http://54.207.148.33:8080/api/usuario/" + email,
                             Usuario.class)
                     .getBody();
         } catch (HttpClientErrorException.NotFound e) {
