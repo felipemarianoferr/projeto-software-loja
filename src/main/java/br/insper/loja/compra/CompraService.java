@@ -43,6 +43,7 @@ public class CompraService {
             if (produto.getEstoque() < 1) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
             }
+            idProdutos.add(idProduto);
             produtoService.atualizarEstoque(produto.getId(), 1);
         }
         compra.setProdutos(idProdutos);
