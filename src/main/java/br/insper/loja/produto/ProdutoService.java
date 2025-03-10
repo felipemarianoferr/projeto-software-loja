@@ -25,7 +25,7 @@ public class ProdutoService {
 
     public void atualizarEstoque(String id, Integer quantidade) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://54.207.148.33:8082/api/produto/produtos/" + id + "/estoque";
+        String url = "http://54.207.148.33:8082/api/produto/estoque/" + id + "/" + quantidade + "/false";
 
         try {
             restTemplate.put(url, quantidade);
