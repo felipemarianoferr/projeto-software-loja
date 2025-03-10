@@ -1,5 +1,6 @@
 package br.insper.loja.produto;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -14,7 +15,7 @@ public class ProdutoService {
 
         try {
             return restTemplate
-                    .getForEntity("http://localhost:8080/api/produto/" + id,
+                    .getForEntity("http://54.207.148.33:8082/api/produto" + id,
                             Produto.class)
                     .getBody();
         } catch (HttpClientErrorException.NotFound e) {
