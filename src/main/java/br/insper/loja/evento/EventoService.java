@@ -13,7 +13,7 @@ public class EventoService {
         evento.setAcao(acao);
 
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForEntity("http://54.207.148.33:8080/api/evento", evento, Evento.class);
+        restTemplate.postForEntity("http://localhost:8080/api/evento", evento, Evento.class);
 
     }
 
