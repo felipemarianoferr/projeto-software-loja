@@ -25,19 +25,19 @@ public class CompraService {
     @Autowired
     private ProdutoService produtoService;
 
-    public Compra salvarCompra(Compra compra, Usuario usuario) {
+    public Compra salvarCompra(Compra compra, Usuario usuario, String token) {
         compra.setNome(usuario.getNome());
         compra.setUsuario(usuario.getEmail());
         compra.setDataCompra(LocalDateTime.now());
 
         List<String> idProdutos = new ArrayList<>();
         for (String idProduto : compra.getProdutos()) {
-            Produto produto = produtoService.getProduto(idProduto);
+            Produto produto = produtoService.getProduto(idProduto, token);
             if (produto.getEstoque() < 1) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
             }
             idProdutos.add(idProduto);
-            produtoService.atualizarEstoque(produto.getId(), 1);
+            produtoService.atualizarEstoque(produto.getId(), 1, token);
         }
 
         compra.setProdutos(idProdutos);

@@ -22,6 +22,8 @@ public class CompraController {
     @PostMapping
     public Compra salvarCompra(@RequestBody Compra compra, HttpServletRequest request) {
         Usuario usuario = (Usuario) request.getAttribute("usuario");
-        return compraService.salvarCompra(compra, usuario);
+        String token = request.getHeader("Authorization");
+        return compraService.salvarCompra(compra, usuario, token);
     }
+
 }
